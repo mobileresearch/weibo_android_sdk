@@ -1,0 +1,14 @@
+#Fat Jar Configuration File
+#Thu Aug 02 16:58:12 CST 2012
+onejar.license.required=true
+manifest.classpath=
+manifest.removesigners=true
+onejar.checkbox=false
+jarname=weibo.sdk.android.sso_fat.jar
+manifest.mergeall=true
+manifest.mainclass=
+manifest.file=<createnew>
+jarname.isextern=false
+onejar.expand=
+excludes=<jar|annotations.jar>;<jar|weibo.sdk.android.jar>
+includes=
