@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<project name="FatJar weibo.sdk.android.sso_fat.jar (experimental)" default="main" basedir=".">
+<project name="FatJar weibo.sdk.android.sso.jar (experimental)" default="main" basedir=".">
     <!-- this file was created by Fat-Jar Eclipse Plug-in -->
     <!-- the ANT-Export is in a very early stage, so this -->
     <!-- is only experimental, ANT 1.6 or above is        -->
@@ -19,6 +19,7 @@
         <fatjar.build output="weibo.sdk.android.sso.jar">
             <fatjar.manifest/>
             <fatjar.filesource path="D:\workspace\weibo.sdk.android.sso\bin\classes" relpath=""/>
+            <fatjar.jarsource file="D:\workspace\weibo.sdk.android.sso\oauth20-api.jar" relpath=""/>
             <fatjar.jarsource file="D:\workspace\weibo.sdk.android.sso\oauth20.jar" relpath=""/>
         </fatjar.build>
     </target>

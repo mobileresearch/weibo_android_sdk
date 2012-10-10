@@ -16,7 +16,7 @@ import android.webkit.CookieSyncManager;
  * @author luopeng (luopeng@staff.sina.com.cn)
  */
 public class Weibo {
-	public static String URL_OAUTH2_ACCESS_AUTHORIZE = "https://api.weibo.com/oauth2/authorize";
+	public static String URL_OAUTH2_ACCESS_AUTHORIZE = "https://open.weibo.cn/oauth2/authorize";
 
 	private static Weibo mWeiboInstance = null;
 
@@ -28,6 +28,7 @@ public class Weibo {
 	public static final String KEY_TOKEN = "access_token";
 	public static final String KEY_EXPIRES = "expires_in";
 	public static final String KEY_REFRESHTOKEN = "refresh_token";
+	public static boolean isWifi=false;//当前是否为wifi
 	/**
 	 * 
 	 * @param appKey 第三方应用的appkey
@@ -58,6 +59,7 @@ public class Weibo {
 	 * @param listener WeiboAuthListener 微博认证的回调接口
 	 */
 	public void authorize(Context context, WeiboAuthListener listener) {
+		isWifi=Utility.isWifi(context);
 		startAuthDialog(context, listener);
 	}
 

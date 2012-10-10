@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project default="javadoc">
+    <target name="javadoc">
+        <javadoc access="public" additionalparam=" -encoding UTF-8 -charset UTF-8 -windowtitle 新浪微博SDK" author="false" classpath="libs/android-support-v4.jar;D:\android-sdk-windows\tools\support\annotations.jar" destdir="doc" doctitle="新浪微博sdk" nodeprecated="false" nodeprecatedlist="false" noindex="false" nonavbar="false" notree="false" packagenames="com.weibo.sdk.android.util,com.weibo.sdk.android.keep,com.weibo.sdk.android.api,com.weibo.sdk.android.net" source="1.6" sourcefiles="src/com/weibo/sdk/android/WeiboAuthListener.java,src/com/weibo/sdk/android/Weibo.java,src/com/weibo/sdk/android/WeiboParameters.java,src/com/weibo/sdk/android/WeiboDialog.java,src/com/weibo/sdk/android/WeiboException.java,src/com/weibo/sdk/android/WeiboDialogError.java,src/com/weibo/sdk/android/Oauth2AccessToken.java" sourcepath="src;gen" splitindex="true" use="true" version="true"/>
+    </target>
+</project>

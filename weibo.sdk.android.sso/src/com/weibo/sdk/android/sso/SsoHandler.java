@@ -66,6 +66,7 @@ public class SsoHandler {
     public SsoHandler(Activity activity,Weibo weibo) {
         mAuthActivity = activity;
         mWeibo=weibo;
+        Weibo.isWifi=Utility.isWifi(activity);
         conn = new ServiceConnection() {
             @Override
             public void onServiceDisconnected(ComponentName name) {

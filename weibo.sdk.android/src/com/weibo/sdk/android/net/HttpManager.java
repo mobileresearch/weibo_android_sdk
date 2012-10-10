@@ -2,6 +2,7 @@ package com.weibo.sdk.android.net;
 
 import java.io.BufferedInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -97,12 +98,12 @@ public class HttpManager {
 				byte[] data = null;
 				String _contentType=params.getValue("content-type");
 				
-				bos = new ByteArrayOutputStream(1024 * 50);
+				bos = new ByteArrayOutputStream();
 				if (!TextUtils.isEmpty(file)) {
 					paramToUpload(bos, params);
 					post.setHeader("Content-Type", MULTIPART_FORM_DATA + "; boundary=" + BOUNDARY);
-					Bitmap bf = BitmapFactory.decodeFile(file);
-					imageContentToUpload(bos, bf);
+					Utility.UploadImageUtils.revitionPostImageSize(  file);
+					imageContentToUpload(bos, file);
 				} else {
 				    if(_contentType!=null){
 				        params.remove("content-type");
@@ -137,7 +138,7 @@ public class HttpManager {
 			throw new WeiboException(e);
 		}
 	}
-
+	
 	private static HttpClient getNewHttpClient() {
 		try {
 			KeyStore trustStore = KeyStore.getInstance(KeyStore.getDefaultType());
@@ -231,7 +232,7 @@ public class HttpManager {
 		}
 	}
 
-	private static void imageContentToUpload(OutputStream out, Bitmap imgpath) throws WeiboException {
+	private static void imageContentToUpload(OutputStream out, String imgpath) throws WeiboException {
 		if(imgpath==null){
 		    return;
 		}
@@ -243,18 +244,26 @@ public class HttpManager {
 		String filetype = "image/png";
 		temp.append("Content-Type: ").append(filetype).append("\r\n\r\n");
 		byte[] res = temp.toString().getBytes();
-		BufferedInputStream bis = null;
+		FileInputStream input = null;
 		try {
 			out.write(res);
-			imgpath.compress(CompressFormat.PNG,50, out);
+			 input = new FileInputStream(imgpath);
+			byte[] buffer=new byte[1024*50];
+			while(true){
+				int count=input.read(buffer);
+				if(count==-1){
+					break;
+				}
+				out.write(buffer, 0, count);
+			}
 			out.write("\r\n".getBytes());
 			out.write(("\r\n" + END_MP_BOUNDARY).getBytes());
 		} catch (IOException e) {
 			throw new WeiboException(e);
 		} finally {
-			if (null != bis) {
+			if (null != input) {
 				try {
-					bis.close();
+					input.close();
 				} catch (IOException e) {
 					throw new WeiboException(e);
 				}
