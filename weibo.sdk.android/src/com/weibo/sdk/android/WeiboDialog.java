@@ -10,6 +10,7 @@ import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.res.AssetManager;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -180,6 +181,13 @@ public class WeiboDialog extends Dialog {
 		@Override
 		public boolean shouldOverrideUrlLoading(WebView view, String url) {
 			Log.d(TAG, "Redirect URL: " + url);
+			 if (url.startsWith("sms:")) {  //针对webview里的短信注册流程，需要在此单独处理sms协议
+	                Intent sendIntent = new Intent(Intent.ACTION_VIEW);  
+	                sendIntent.putExtra("address", url.replace("sms:", ""));  
+	                sendIntent.setType("vnd.android-dir/mms-sms");  
+	                WeiboDialog.this.getContext().startActivity(sendIntent);  
+	                return true;  
+	            }  
 			return super.shouldOverrideUrlLoading(view, url);
 		}
 
