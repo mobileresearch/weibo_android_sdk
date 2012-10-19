@@ -13,7 +13,7 @@ public abstract class WeiboAPI {
     /**
      * 访问微博服务接口的地址
      */
-	public static final String API_SERVER = "https://open.weibo.cn/2";
+	public static final String API_SERVER = "https://api.weibo.com/2";
 	/**
 	 * post请求方式
 	 */

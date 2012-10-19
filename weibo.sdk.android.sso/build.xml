@@ -18,9 +18,9 @@
     <target name="main">
         <fatjar.build output="weibo.sdk.android.sso.jar">
             <fatjar.manifest/>
-            <fatjar.filesource path="D:\workspace\weibo.sdk.android.sso\bin\classes" relpath=""/>
-            <fatjar.jarsource file="D:\workspace\weibo.sdk.android.sso\oauth20-api.jar" relpath=""/>
-            <fatjar.jarsource file="D:\workspace\weibo.sdk.android.sso\oauth20.jar" relpath=""/>
+            <fatjar.filesource path="E:\workspace\android\weibo.sdk.android.sso\bin\classes" relpath=""/>
+            <fatjar.jarsource file="E:\workspace\android\weibo.sdk.android.sso\libs\oauth20-api.jar" relpath=""/>
+            <fatjar.jarsource file="E:\workspace\android\weibo.sdk.android.sso\libs\oauth20.jar" relpath=""/>
         </fatjar.build>
     </target>
 </project>

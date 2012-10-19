@@ -240,7 +240,13 @@ public class WeiboDialog extends Dialog {
 			// 用户或授权服务器拒绝授予数据访问权限
 			mListener.onCancel();
 		} else {
-			mListener.onWeiboException(new WeiboException(error, Integer.parseInt(error_code)));
+			if(error_code==null){
+				mListener.onWeiboException(new WeiboException(error, 0));
+			}
+			else{
+				mListener.onWeiboException(new WeiboException(error, Integer.parseInt(error_code)));
+			}
+			
 		}
 	}
 	private boolean parseDimens(){
