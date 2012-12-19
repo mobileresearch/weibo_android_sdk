@@ -30,27 +30,12 @@
         android:layout_marginLeft="10dp" />
 
     <Button
-        android:id="@+id/sendBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="分享"
-        android:visibility="invisible" />
-
-    <Button
-        android:id="@+id/apiBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/sendBtn"
-        android:text="微博功能演示"
-        android:visibility="invisible" />
-
-    <Button
         android:id="@+id/apiCancel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/sendBtn"
-        android:layout_toRightOf="@id/apiBtn"
+           android:layout_marginLeft="10dp"
+        android:layout_marginTop="30dp"
+        android:layout_toRightOf="@id/sso"
         android:text="注销"
         android:visibility="invisible" />
 
