@@ -5,6 +5,8 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.lang.reflect.Field;
+import java.net.InetAddress;
 import java.net.Socket;
 import java.net.UnknownHostException;
 import java.security.KeyManagementException;
@@ -200,6 +202,7 @@ public class HttpManager {
 		@Override
 		public Socket createSocket(Socket socket, String host, int port, boolean autoClose)
 				throws IOException, UnknownHostException {
+			injectHostname(socket, host);
 			return sslContext.getSocketFactory().createSocket(socket, host, port, autoClose);
 		}
 
@@ -207,6 +210,15 @@ public class HttpManager {
 		public Socket createSocket() throws IOException {
 			return sslContext.getSocketFactory().createSocket();
 		}
+
+		private void injectHostname(Socket socket, String host) {
+            try {
+                Field field = InetAddress.class.getDeclaredField("hostName");
+                field.setAccessible(true);
+                field.set(socket.getInetAddress(), host);
+            } catch (Exception ignored) {
+            }
+        }
 	}
 
 	private static void paramToUpload(OutputStream baos, WeiboParameters params)

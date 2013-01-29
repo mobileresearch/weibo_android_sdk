@@ -103,6 +103,12 @@ public class WeiboDialog extends Dialog {
 		dismiss();
 	}
 
+	@Override
+	public void cancel(){
+		mListener.onCancel();
+		super.cancel();
+	}
+
 	private void setUpWebView() {
 		webViewContainer = new RelativeLayout(getContext());
 		mWebView = new WebView(getContext());
