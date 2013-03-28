@@ -30,7 +30,7 @@ public class MainActivity extends Activity {
     private Weibo mWeibo;
     private static final String CONSUMER_KEY = "966056985";// 替换为开发者的appkey，例如"1646212860";
     private static final String REDIRECT_URL = "http://www.sina.com";
-    private Button authBtn, apiBtn, ssoBtn, cancelBtn;
+    private Button authBtn, ssoBtn, cancelBtn;
     private TextView mText;
     public static Oauth2AccessToken accessToken;
     public static final String TAG = "sinasdk";
@@ -90,7 +90,6 @@ public class MainActivity extends Activity {
             Weibo.isWifi = Utility.isWifi(this);
             try {
                 Class sso = Class.forName("com.weibo.sdk.android.api.WeiboAPI");// 如果支持weiboapi的话，显示api功能演示入口按钮
-                apiBtn.setVisibility(View.VISIBLE);
             } catch (ClassNotFoundException e) {
                 // e.printStackTrace();
                 Log.i(TAG, "com.weibo.sdk.android.api.WeiboAPI not found");
@@ -132,7 +131,6 @@ public class MainActivity extends Activity {
                 try {
                     Class sso = Class
                             .forName("com.weibo.sdk.android.api.WeiboAPI");// 如果支持weiboapi的话，显示api功能演示入口按钮
-                    apiBtn.setVisibility(View.VISIBLE);
                 } catch (ClassNotFoundException e) {
                     // e.printStackTrace();
                     Log.i(TAG, "com.weibo.sdk.android.api.WeiboAPI not found");
