@@ -1,0 +1,352 @@
+package com.weibo.sdk.android.demo;
+
+import java.util.HashMap;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+
+import com.sina.sdk.android.call.Constants;
+import com.sina.sdk.android.call.WeiboNotInstalledException;
+import com.sina.sdk.android.call.WeiboPageUtilsV2;
+
+public class CallActivityV3 extends Activity {
+
+	private Button mPostWeiboButton; 
+	private Button mNearbypeopleButton; 
+	private Button mNearbyweiboButton; 
+	private Button mUserinfoButton; 
+	private Button mUsertrendsoButton;  
+	private Button mPageinfoButton; 
+	private Button mPageproductlistButton; 
+	private Button mPageuserlistButton; 
+	private Button mPageweibolistButton; 
+	private Button mPagephotolisButtont; 
+	private Button mPagedetailinfoButton;
+	private Button mWeibobrowserButton;
+	private Button mWeibomapButtonButton;
+	private Button mQrcodeButton;
+	private Button mNearPhotoListButton;
+	private Button mPoiPhotoListButton;
+	private Button mPoiPageButton;
+	private Button mMBlogDetailButton;
+	
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.ly_call);
+        
+        mPostWeiboButton = (Button)findViewById(R.id.post_weibo);
+        mPostWeiboButton.setOnClickListener(mOnClickListener);
+        
+        mNearbypeopleButton = (Button)findViewById(R.id.view_nearbypeople);
+        mNearbypeopleButton.setOnClickListener(mOnClickListener);
+        
+        mNearbyweiboButton = (Button)findViewById(R.id.view_nearbyweibo);
+        mNearbyweiboButton.setOnClickListener(mOnClickListener);
+        
+        mUserinfoButton = (Button)findViewById(R.id.view_userinfo);
+        mUserinfoButton.setOnClickListener(mOnClickListener);
+        
+        mPageinfoButton = (Button)findViewById(R.id.view_pageinfo);
+        mPageinfoButton.setOnClickListener(mOnClickListener);
+        
+        mPageproductlistButton = (Button)findViewById(R.id.view_pageproductlist);
+        mPageproductlistButton.setOnClickListener(mOnClickListener);
+        
+        mPageuserlistButton = (Button)findViewById(R.id.view_pageuserlist);
+        mPageuserlistButton.setOnClickListener(mOnClickListener);
+        
+        mPageweibolistButton = (Button)findViewById(R.id.view_pageweibolist);
+        mPageweibolistButton.setOnClickListener(mOnClickListener);
+        
+        mPagephotolisButtont = (Button)findViewById(R.id.view_pagephotolist);
+        mPagephotolisButtont.setOnClickListener(mOnClickListener);
+        
+        mPagedetailinfoButton = (Button)findViewById(R.id.view_pagedetailinfo);
+        mPagedetailinfoButton.setOnClickListener(mOnClickListener);
+        
+        mUsertrendsoButton = (Button)findViewById(R.id.view_usertrends);
+        mUsertrendsoButton.setOnClickListener(mOnClickListener);
+        
+        mWeibobrowserButton = (Button)findViewById(R.id.open_in_weibobrowser);
+        mWeibobrowserButton.setOnClickListener(mOnClickListener);
+        
+        mWeibomapButtonButton = (Button)findViewById(R.id.display_in_weibomap);
+        mWeibomapButtonButton.setOnClickListener(mOnClickListener);
+        
+        mQrcodeButton = (Button)findViewById(R.id.open_qrcode_scanner);
+        mQrcodeButton.setOnClickListener(mOnClickListener);
+        
+        mNearPhotoListButton = (Button)findViewById(R.id.open_nearphotolist);
+        mNearPhotoListButton.setOnClickListener(mOnClickListener);
+        
+        mPoiPhotoListButton = (Button)findViewById(R.id.open_poiphotolist);
+        mPoiPhotoListButton.setOnClickListener(mOnClickListener);
+        
+        mPoiPageButton = (Button)findViewById(R.id.open_poipage);
+        mPoiPageButton.setOnClickListener(mOnClickListener);
+        
+        mMBlogDetailButton = (Button)findViewById(R.id.open_mblogdetail);
+        mMBlogDetailButton.setOnClickListener(mOnClickListener);
+        
+    }
+    
+    
+    private View.OnClickListener mOnClickListener = new View.OnClickListener() {
+		@Override
+		public void onClick(View v) {
+			switch(v.getId()){
+				case R.id.post_weibo: postNewWeibo(); break;
+				case R.id.view_nearbypeople: viewNearbyPeople(); break;
+				case R.id.view_nearbyweibo: viewNearbyWeibo(); break;
+				case R.id.view_userinfo: viewUserInfo(); break;
+				case R.id.view_pageinfo: viewPageInfo(); break;
+				case R.id.view_pageproductlist: viewPageProductList(); break;
+				case R.id.view_pageuserlist: viewPageUserList(); break;
+				case R.id.view_pageweibolist: viewPageWeiboList(); break;
+				case R.id.view_pagephotolist: viewPagePhotoList(); break;
+				case R.id.view_pagedetailinfo: viewPageDetailInfo(); break;
+				case R.id.view_usertrends: viewUsertrends(); break;
+				case R.id.open_in_weibobrowser: openInWeiboBrowser(); break;
+				case R.id.display_in_weibomap: displayInWeiboMap(); break;
+				case R.id.open_qrcode_scanner: openQrcodeScanner(); break;
+//				case R.id.open_nearphotolist: openNearPhotoList(); break;
+//				case R.id.open_poiphotolist: openPoiPhotoList(); break;
+//				case R.id.open_poipage: openPoiPage(); break;
+				case R.id.open_mblogdetail: openMBlogDetail(); break;
+				default:break;
+			}
+		}
+	};
+	
+	
+	private void postNewWeibo(){
+		String content = "WeiboPageSDK 测试    ";
+		try {
+			HashMap<String,String> params = new HashMap<String,String>();
+			params.put(Constants.ParamKey.CONTENT, "#海底捞月# 我用#高德地图#分享了一个位置：http://amap.com/poi/B000A84WEV");
+			params.put(Constants.ParamKey.PAGEID, "100101B2094654D168A0FF439F");
+			params.put(Constants.ParamKey.PACKAGENAME, "com.sina.weibopro");
+			WeiboPageUtilsV2.postNewWeibo(CallActivityV3.this, params);
+		} catch (WeiboNotInstalledException e) {
+			/**
+			 * 抓获此异常后，可以提醒用户没有安装微博客户端，或客户端版本过低；
+			 * 也可以引导用户安装微博官方客户端
+			 */
+		}
+	}
+    
+	private void viewNearbyPeople(){
+		try {
+			HashMap<String,String> params = new HashMap<String,String>();
+			params.put(Constants.ParamKey.LONGITUDE, "116.4075");
+			params.put(Constants.ParamKey.LATITUDE, "39.9040");
+			params.put(Constants.ParamKey.PACKAGENAME, "com.sina.weibopro");
+			WeiboPageUtilsV2.viewNearbyPeople(CallActivityV3.this, params);
+			
+		} catch (WeiboNotInstalledException e) {
+			/**
+			 * 抓获此异常后，可以提醒用户没有安装微博客户端，或客户端版本过低；
+			 * 也可以引导用户安装微博官方客户端
+			 */
+		}
+	}
+	
+	private void viewNearbyWeibo(){
+		try {
+			HashMap<String,String> params = new HashMap<String,String>();
+			params.put(Constants.ParamKey.LONGITUDE, "116.4075");
+			params.put(Constants.ParamKey.LATITUDE, "39.9040");
+			params.put(Constants.ParamKey.PACKAGENAME, "com.sina.weibopro");
+			WeiboPageUtilsV2.viewNearbyWeibo(CallActivityV3.this, params);
+		} catch (WeiboNotInstalledException e) {
+			/**
+			 * 抓获此异常后，可以提醒用户没有安装微博客户端，或客户端版本过低；
+			 * 也可以引导用户安装微博官方客户端
+			 */
+		}
+	}
+	
+	private void viewUserInfo(){
+		try {
+			HashMap<String,String> params = new HashMap<String,String>();
+			params.put(Constants.ParamKey.UID, "1781379945");
+			params.put(Constants.ParamKey.NICK, "微博Android客户端");
+			params.put(Constants.ParamKey.PACKAGENAME, "com.sina.weibopro");
+			WeiboPageUtilsV2.viewUserInfo(CallActivityV3.this, params);
+		}  catch (WeiboNotInstalledException e) {
+			/**
+			 * 抓获此异常后，可以提醒用户没有安装微博客户端，或客户端版本过低；
+			 * 也可以引导用户安装微博官方客户端
+			 */
+		}
+	}
+	
+	private void viewUsertrends(){
+		try {
+			HashMap<String,String> params = new HashMap<String,String>();
+			params.put(Constants.ParamKey.UID, "1992799765");
+			params.put(Constants.ParamKey.PACKAGENAME, "com.sina.weibopro");
+			WeiboPageUtilsV2.viewUsertrends(CallActivityV3.this, params);
+		} catch (WeiboNotInstalledException e) {
+			/**
+			 * 抓获此异常后，可以提醒用户没有安装微博客户端，或客户端版本过低；
+			 * 也可以引导用户安装微博官方客户端
+			 */
+		}
+	}
+	
+	private void viewPageInfo(){
+		try {
+			HashMap<String,String> params = new HashMap<String,String>();
+			params.put(Constants.ParamKey.PAGEID, "100101B2094654D16CABFE419E");
+			params.put(Constants.ParamKey.PACKAGENAME, "com.sina.weibopro");
+			WeiboPageUtilsV2.viewPageInfo(CallActivityV3.this, params);
+		} catch (WeiboNotInstalledException e) {
+			/**
+			 * 抓获此异常后，可以提醒用户没有安装微博客户端，或客户端版本过低；
+			 * 也可以引导用户安装微博官方客户端
+			 */
+		}
+	}
+	
+	private void viewPageProductList(){
+		try {
+			
+			HashMap<String,String> params = new HashMap<String,String>();
+			params.put(Constants.ParamKey.PAGEID, "10020238884");
+			params.put(Constants.ParamKey.CARDID, "recommands");
+			params.put(Constants.ParamKey.COUNT, "10");
+			WeiboPageUtilsV2.viewPageProductList(CallActivityV3.this, params);
+		} catch (WeiboNotInstalledException e) {
+			/**
+			 * 抓获此异常后，可以提醒用户没有安装微博客户端，或客户端版本过低；
+			 * 也可以引导用户安装微博官方客户端
+			 */
+		}
+	}
+	
+	private void viewPageUserList(){
+		try {
+			
+			HashMap<String,String> params = new HashMap<String,String>();
+			params.put(Constants.ParamKey.PAGEID, "100101B2094654D16CABFE419E");
+			params.put(Constants.ParamKey.CARDID, "poiuser");
+			params.put(Constants.ParamKey.COUNT, "20");
+			params.put(Constants.ParamKey.TITLE, "他/她们来过这里");
+			WeiboPageUtilsV2.viewPageUserList(CallActivityV3.this, params);
+		} catch (WeiboNotInstalledException e) {
+			/**
+			 * 抓获此异常后，可以提醒用户没有安装微博客户端，或客户端版本过低；
+			 * 也可以引导用户安装微博官方客户端
+			 */
+		}
+	}
+	
+	private void viewPageWeiboList(){
+		try {
+			HashMap<String,String> params = new HashMap<String,String>();
+			params.put(Constants.ParamKey.PAGEID, "100101B2094654D16CABFE419E");
+			params.put(Constants.ParamKey.CARDID, "poistatuses");
+			params.put(Constants.ParamKey.COUNT, "20");
+			params.put(Constants.ParamKey.TITLE, "此地热议");
+			params.put(Constants.ParamKey.PACKAGENAME, "com.sina.weibopro");
+			WeiboPageUtilsV2.viewPageWeiboList(CallActivityV3.this, params);
+		} catch (WeiboNotInstalledException e) {
+			/**
+			 * 抓获此异常后，可以提醒用户没有安装微博客户端，或客户端版本过低；
+			 * 也可以引导用户安装微博官方客户端
+			 */
+		}
+	}
+	
+	private void viewPagePhotoList(){
+		try {
+			HashMap<String,String> params = new HashMap<String,String>();
+			params.put(Constants.ParamKey.PAGEID, "100101B2094654D16CABFE419E");
+			params.put(Constants.ParamKey.CARDID, "poiphoto");
+			params.put(Constants.ParamKey.COUNT, "40");
+			params.put(Constants.ParamKey.PACKAGENAME, "com.sina.weibopro");
+			WeiboPageUtilsV2.viewPagePhotoList(CallActivityV3.this, params);
+		} catch (WeiboNotInstalledException e) {
+			/**
+			 * 抓获此异常后，可以提醒用户没有安装微博客户端，或客户端版本过低；
+			 * 也可以引导用户安装微博官方客户端
+			 */
+		}
+	}
+	
+	private void viewPageDetailInfo(){
+		try {
+			HashMap<String,String> params = new HashMap<String,String>();
+			params.put(Constants.ParamKey.PAGEID, "100101B2094654D16CABFE419E");
+			params.put(Constants.ParamKey.CARDID, "detail");
+			params.put(Constants.ParamKey.PACKAGENAME, "com.sina.weibopro");
+			WeiboPageUtilsV2.viewPageDetailInfo(CallActivityV3.this, params);
+		} catch (WeiboNotInstalledException e) {
+			/**
+			 * 抓获此异常后，可以提醒用户没有安装微博客户端，或客户端版本过低；
+			 * 也可以引导用户安装微博官方客户端
+			 */
+		}
+	}
+	
+	private void openInWeiboBrowser(){
+		try {
+			WeiboPageUtilsV2.openInWeiboBrowser(CallActivityV3.this, "weibo.com", "topnav", null,"com.sina.weibopro");
+		} catch (WeiboNotInstalledException e) {
+			/**
+			 * 抓获此异常后，可以提醒用户没有安装微博客户端，或客户端版本过低；
+			 * 也可以引导用户安装微博官方客户端
+			 */
+		}
+	}
+	
+	private void displayInWeiboMap(){
+		try {
+			HashMap<String,String> params = new HashMap<String,String>();
+			params.put(Constants.ParamKey.LONGITUDE, "116.4075");
+			params.put(Constants.ParamKey.LATITUDE, "39.9040");
+			params.put(Constants.ParamKey.PACKAGENAME, "com.sina.weibopro");
+			WeiboPageUtilsV2.displayInWeiboMap(CallActivityV3.this, params);
+		} catch (WeiboNotInstalledException e) {
+			/**
+			 * 抓获此异常后，可以提醒用户没有安装微博客户端，或客户端版本过低；
+			 * 也可以引导用户安装微博官方客户端
+			 */
+		}
+	}
+	
+	
+	private void openQrcodeScanner(){
+		try {
+			HashMap<String,String> params = new HashMap<String,String>();
+			params.put(Constants.ParamKey.PACKAGENAME, "com.sina.weibopro");
+			WeiboPageUtilsV2.openQrcodeScanner(CallActivityV3.this, params);
+		}catch (WeiboNotInstalledException e) {
+			/**
+			 * 抓获此异常后，可以提醒用户没有安装微博客户端，或客户端版本过低；
+			 * 也可以引导用户安装微博官方客户端
+			 */
+		}
+	}
+	
+	
+	
+	
+	private void openMBlogDetail(){
+		try {
+			HashMap<String,String> params = new HashMap<String,String>();
+			params.put(Constants.ParamKey.MBLOGID, "zdQ2N1l2Y");
+			WeiboPageUtilsV2.weiboDetail(CallActivityV3.this, params);
+		}catch (WeiboNotInstalledException e) {
+			/**
+			 * 抓获此异常后，可以提醒用户没有安装微博客户端，或客户端版本过低；
+			 * 也可以引导用户安装微博官方客户端
+			 */
+		}
+	}
+    
+}
