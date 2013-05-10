@@ -289,7 +289,7 @@ public class ResponseMessageActivity extends Activity implements
 	}
 	
 	private String getActionUrl() {
-        return "http://sina.cn?eet"+System.currentTimeMillis();
+        return "http://sina.com?eet"+System.currentTimeMillis();
     }
 	
 	@Override

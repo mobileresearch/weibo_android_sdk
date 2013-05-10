@@ -200,7 +200,7 @@ public class RequestMessageActivity extends Activity implements OnClickListener,
     }
 
     private String getActionUrl() {
-        return "http://sina.cn?eet"+System.currentTimeMillis();
+        return "http://sina.com?eet"+System.currentTimeMillis();
     }
     
     /**
