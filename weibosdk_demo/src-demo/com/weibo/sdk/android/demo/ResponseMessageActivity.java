@@ -240,7 +240,7 @@ public class ResponseMessageActivity extends Activity implements
 		BitmapDrawable bitmapDrawable = (BitmapDrawable) webpageImage
 				.getDrawable();
 		mediaObject.setThumbImage(bitmapDrawable.getBitmap());
-		mediaObject.actionUrl = webpageUrl.getText().toString();
+		mediaObject.actionUrl = getActionUrl();
 		return mediaObject;
 	}
 
@@ -259,7 +259,7 @@ public class ResponseMessageActivity extends Activity implements
 		BitmapDrawable bitmapDrawable = (BitmapDrawable) videoImage
 				.getDrawable();
 		videoObject.setThumbImage(bitmapDrawable.getBitmap());
-		videoObject.actionUrl = videoUrl.getText().toString();
+		videoObject.actionUrl = getActionUrl();
 		videoObject.dataUrl = "www.weibo.com";
 		videoObject.dataHdUrl = "www.weibo.com";
 		videoObject.duration = 10;
@@ -281,12 +281,17 @@ public class ResponseMessageActivity extends Activity implements
 		BitmapDrawable bitmapDrawable = (BitmapDrawable) musicImage
 				.getDrawable();
 		musicObject.setThumbImage(bitmapDrawable.getBitmap());
-		musicObject.actionUrl = musicUrl.getText().toString();
+		musicObject.actionUrl = getActionUrl();
 		musicObject.dataUrl = "www.weibo.com";
 		musicObject.dataHdUrl = "www.weibo.com";
 		musicObject.duration = 10;
 		return musicObject;
 	}
+	
+	private String getActionUrl() {
+        return "http://sina.cn?eet"+System.currentTimeMillis();
+    }
+	
 	@Override
 	protected void onNewIntent(Intent intent) {
 		super.onNewIntent(intent);

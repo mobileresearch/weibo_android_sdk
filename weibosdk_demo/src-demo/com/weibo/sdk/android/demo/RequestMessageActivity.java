@@ -199,6 +199,10 @@ public class RequestMessageActivity extends Activity implements OnClickListener,
         weiboAPI.sendRequest(this, req);
     }
 
+    private String getActionUrl() {
+        return "http://sina.cn?eet"+System.currentTimeMillis();
+    }
+    
     /**
      * 文本消息构造方法
      * 
@@ -222,8 +226,6 @@ public class RequestMessageActivity extends Activity implements OnClickListener,
 //        BitmapDrawable bitmapDrawable = (BitmapDrawable) draw;
         BitmapDrawable bitmapDrawable = (BitmapDrawable) image.getDrawable();
         imageObject.setImageObject(bitmapDrawable.getBitmap());
-        imageObject.title="title";
-        imageObject.description="description";
 
         return imageObject;
     }
@@ -236,12 +238,12 @@ public class RequestMessageActivity extends Activity implements OnClickListener,
     private WebpageObject getWebpageObj() {
         WebpageObject mediaObject = new WebpageObject();
         mediaObject.identify = Util.generateId();// 创建一个唯一的ID
-        mediaObject.title = "webapptitle";//webpageTitle.getText().toString();
-        mediaObject.description ="webappDescription";// webpageContent.getText().toString();
+        mediaObject.title = webpageTitle.getText().toString();
+        mediaObject.description = webpageContent.getText().toString();
         // 设置bitmap类型的图片到视频对象里
         BitmapDrawable bitmapDrawable = (BitmapDrawable) webpageImage.getDrawable();
         mediaObject.setThumbImage(bitmapDrawable.getBitmap());
-        mediaObject.actionUrl = webpageUrl.getText().toString();
+        mediaObject.actionUrl = getActionUrl();
         return mediaObject;
     }
 
@@ -254,12 +256,12 @@ public class RequestMessageActivity extends Activity implements OnClickListener,
         // 创建媒体消息
         VideoObject videoObject = new VideoObject();
         videoObject.identify = Util.generateId();// 创建一个唯一的ID
-        videoObject.title = "videoTitle";//.getText().toString();
-        videoObject.description = "videoContent";//.getText().toString();
+        videoObject.title = videoTitle.getText().toString();
+        videoObject.description = videoContent.getText().toString();
         // 设置bitmap类型的图片到视频对象里
         BitmapDrawable bitmapDrawable = (BitmapDrawable) videoImage.getDrawable();
         videoObject.setThumbImage(bitmapDrawable.getBitmap());
-        videoObject.actionUrl = videoUrl.getText().toString();
+        videoObject.actionUrl = getActionUrl();
         videoObject.dataUrl = "www.weibo.com";
         videoObject.dataHdUrl = "www.weibo.com";
         videoObject.duration = 10;
@@ -275,12 +277,12 @@ public class RequestMessageActivity extends Activity implements OnClickListener,
         // 创建媒体消息
         MusicObject musicObject = new MusicObject();
         musicObject.identify = Util.generateId();// 创建一个唯一的ID
-        musicObject.title = "musicTitle";//.getText().toString();
-        musicObject.description = "musicContent";//.getText().toString();
+        musicObject.title = musicTitle.getText().toString();
+        musicObject.description = musicContent.getText().toString();
         // 设置bitmap类型的图片到视频对象里
         BitmapDrawable bitmapDrawable = (BitmapDrawable) musicImage.getDrawable();
         musicObject.setThumbImage(bitmapDrawable.getBitmap());
-        musicObject.actionUrl = musicUrl.getText().toString();
+        musicObject.actionUrl = getActionUrl();
         musicObject.dataUrl = "www.weibo.com";
         musicObject.dataHdUrl = "www.weibo.com";
         musicObject.duration = 10;
