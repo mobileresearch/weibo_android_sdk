@@ -14,9 +14,9 @@
 | 名词        | 注解    | 
 | --------    | :-----  | 
 | AppKey      | 分配给每个第三方应用的 app key。用于鉴权身份，显示来源等功能。|
+| RedirectURI | 应用回调页面，可在新浪微博开放平台->我的应用->应用信息->高级应用->授权设置->应用回调页中找到。|
 | AccessToken | 表示用户身份的 token，用于微博 API 的调用。| 
 | Expire in   | 过期时间，用于判断登录是否过期。| 
-| RedirectURI | 应用回调页面，可在新浪微博开放平台->我的应用->应用信息->高级应用->授权设置->应用回调页中找到。|
 
 # 功能列表
 ### 1. 认证授权
@@ -48,11 +48,14 @@
 ```java
 mWeibo = Weibo.getInstance(ConstantS.APP_KEY, ConstantS.REDIRECT_URL, ConstantS.SCOPE);
 ```
-其中，**APP_KEY、REDIRECT_URL、SCOPE** 需要替换成第三方应用申请的内容。
+其中：APP_KEY、 REDIRECT_URL、 SCOPE需要替换成第三方应用申请的内容。
 ### 3. 注册应用程序的包名和签名
 第三方应用程序 **包名** 和 **签名** 必须在新浪微博开放平台注册，否则无法进行正确的授权。
->可以在新浪微博开放平台-->我的应用-->应用信息-->应用基本信息处找到，点击编辑按钮即可注册。具体详见[微博Android平台SDK文档V2.3.0.pdf](https://raw.github.com/mobileresearch/weibo_android_sdk/master/%E5%BE%AE%E5%8D%9AAndroid%E5%B9%B3%E5%8F%B0SDK%E6%96%87%E6%A1%A3V2.3.0.pdf)  
+>可以在新浪微博开放平台-->我的应用-->应用信息-->应用基本信息处找到，点击编辑按钮即可注册。  
+具体详见：[微博Android平台SDK文档V2.3.0.pdf](https://raw.github.com/mobileresearch/weibo_android_sdk/master/%E5%BE%AE%E5%8D%9AAndroid%E5%B9%B3%E5%8F%B0SDK%E6%96%87%E6%A1%A3V2.3.0.pdf)
+
 ### 4. 实现WeiboAuthListener接口
+
 ```java
 class AuthDialogListener implements WeiboAuthListener {
     
@@ -86,7 +89,7 @@ mWeibo.anthorize(MainActivity.this, new AuthDialogListener());
 mSsoHandler = new SsoHandler(MainActivity.this, mWeibo);
 mSsoHandler.authorize(new AuthDialogListener(), null);
 ```
-并在Activity的**onActivityResult**函数中，调用：
+并在Activity的onActivityResult函数中，调用以下方法：
 ```java
 // SSO 授权回调
 // 重要：发起 SSO 登陆的Activity必须重写onActivityResult
