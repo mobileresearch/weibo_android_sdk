@@ -38,22 +38,22 @@
 
 # 第三方如何使用（认证授权）
 ### 1. 导入SDK JAR包，添加权限
-``` java
+```java
 <uses-permission android:name="android.permission.INTERNET" />
 <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 ```
 ### 2. 创建微博API接口类对象
-``` java
+```java
 mWeibo = Weibo.getInstance(ConstantS.APP_KEY, ConstantS.REDIRECT_URL, ConstantS.SCOPE);
 ```
 其中，**APP_KEY、REDIRECT_URL、SCOPE** 需要替换成第三方应用申请的内容。
 ### 3. 注册应用程序的包名和签名
 第三方应用程序 **包名** 和 **签名** 必须在新浪微博开放平台注册，否则无法进行正确的授权。
->可以在新浪微博开放平台-->我的应用-->应用信息-->应用基本信息处找到，点击编辑按钮即可注册。具体详见[微博Android平台SDK文档V2.3.0.pdf](https://raw.github.com/mobileresearch/weibo_android_sdk/master/%E5%BE%AE%E5%8D%9AAndroid%E5%B9%B3%E5%8F%B0SDK%E6%96%87%E6%A1%A3V2.3.0.pdf)
+>可以在新浪微博开放平台-->我的应用-->应用信息-->应用基本信息处找到，点击编辑按钮即可注册。具体详见[微博Android平台SDK文档V2.3.0.pdf](https://raw.github.com/mobileresearch/weibo_android_sdk/master/%E5%BE%AE%E5%8D%9AAndroid%E5%B9%B3%E5%8F%B0SDK%E6%96%87%E6%A1%A3V2.3.0.pdf)  
 ### 4. 实现WeiboAuthListener接口
-``` java
+```java
 class AuthDialogListener implements WeiboAuthListener {
     
     @Override
