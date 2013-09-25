@@ -34,7 +34,7 @@
 **方式一：**通过 adb install 命令直接安装 weibo.sdk.android.demo.apk  
 **方式二：**在 Eclipse 中导入并运行 weibosdk_demo 工程  
 ***注意：通过方式二运行工程时，请务必替换默认的 debug.keystore文件，否则无法正确的授权成功。***  
->在C:\Users\XXXXX\.android目录下，把Android默认的debug.keystore替换成官方在GitHub上提供的debug.keystore。
+>在C:\Users\XXXXX\\.android目录下，把Android默认的debug.keystore替换成官方在GitHub上提供的debug.keystore。
 
 # 第三方如何使用（认证授权）
 ### 1. 导入SDK JAR包，添加权限
