@@ -20,7 +20,7 @@
 
 # 功能列表
 ### 1. 认证授权
-为开发者提供 Oauth2.0 授权认证，并集成 SSO 登录功能。
+为开发者提供 Oauth2.0 授权认证，并集成 SSO 登录功能（注意：SSO 需要微博客户端才能够进行）。
 ### 2. 微博分享
 从第三方应用分享信息到微博，目前只支持通过微博官方客户端进行分享。
 ### 3. 登入登出
@@ -50,9 +50,9 @@ mWeibo = Weibo.getInstance(ConstantS.APP_KEY, ConstantS.REDIRECT_URL, ConstantS.
 ```
 其中：APP_KEY、 REDIRECT_URL、 SCOPE需要替换成第三方应用申请的内容。
 ### 3. 注册应用程序的包名和签名
-第三方应用程序 **包名** 和 **签名** 必须在新浪微博开放平台注册，否则无法进行正确的授权。
+第三方应用程序 **包名** 和 **签名** 必须在新浪微博开放平台注册，***否则无法进行正确的授权***。
 >可以在新浪微博开放平台-->我的应用-->应用信息-->应用基本信息处找到，点击编辑按钮即可注册。  
-具体详见：[微博Android平台SDK文档V2.3.0.pdf](https://raw.github.com/mobileresearch/weibo_android_sdk/master/%E5%BE%AE%E5%8D%9AAndroid%E5%B9%B3%E5%8F%B0SDK%E6%96%87%E6%A1%A3V2.3.0.pdf)
+具体详见：[微博Android平台SDK文档V2.3.0.pdf](https://raw.github.com/mobileresearch/weibo_android_sdk/master/%E5%BE%AE%E5%8D%9AAndroid%E5%B9%B3%E5%8F%B0SDK%E6%96%87%E6%A1%A3V2.3.0.pdf) 中：**如何注册应用程序的包名和签名**
 
 ### 4. 实现WeiboAuthListener接口
 
