@@ -225,4 +225,4 @@ if (mSsoHandler != null) {
 ## 其它功能
 其它功能请相见文档：[微博Android平台SDK文档V2.4.0.pdf][1]
 
-[1]:https://github.com/mobileresearch/weibo_android_sdk/blob/master/%E5%BE%AE%E5%8D%9AAndroid%E5%B9%B3%E5%8F%B0SDK%E6%96%87%E6%A1%A3V2.3.0.pdf
+[1]:https://github.com/mobileresearch/weibo_android_sdk/blob/master/%E5%BE%AE%E5%8D%9AAndroid%E5%B9%B3%E5%8F%B0SDK%E6%96%87%E6%A1%A3V2.4.0.pdf
