@@ -49,7 +49,7 @@
 ###5. 关于授权
 **Q：**为什么自己写的程序，无法正确授权？但是DEMO是可以的？  
 **A：**原因：签名和包名未注册，或者签名不正确，都会导致该问题。  
-如何签名，请查看[《微博Android平台SDK文档V2.3.0.pdf》][9]中：如何注册应用程序的包名和签名。应用程序的包名就是 AndroidManifest.xml 文件中，package 标签所代表的内容。
+如何签名，请查看[《微博Android平台SDK文档V2.4.0.pdf》][9]中：如何注册应用程序的包名和签名。应用程序的包名就是 AndroidManifest.xml 文件中，package 标签所代表的内容。
 
 **Q：**官方 SDK DEMO 中的 **onComplete(Bundle values)** 函数，怎么取不到 token，Bundle 中只包含 code，为什么？  
 **A：**原因同上。
@@ -92,6 +92,6 @@
 [6]:http://open.weibo.com/wiki/Error_code
 [7]:http://open.weibo.com/tools/console
 [8]:http://open.weibo.com/wiki/%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98#.E5.AE.A1.E6.A0.B8.E7.9B.B8.E5.85.B3.E9.97.AE.E9.A2.98
-[9]:https://raw.github.com/mobileresearch/weibo_android_sdk/master/%E5%BE%AE%E5%8D%9AAndroid%E5%B9%B3%E5%8F%B0SDK%E6%96%87%E6%A1%A3V2.3.0.pdf
+[9]:https://github.com/mobileresearch/weibo_android_sdk/blob/master/%E5%BE%AE%E5%8D%9AAndroid%E5%B9%B3%E5%8F%B0SDK%E6%96%87%E6%A1%A3V2.4.0.pdf
 [10]:https://github.com/mobileresearch/weibo_android_sdk/blob/master/app_signatures.apk
 [11]:http://open.weibo.com/wiki/Scope
