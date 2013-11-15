@@ -3,8 +3,18 @@
 **QQ群：284084420**  
 **邮箱：sdk4wb@sina.cn**  
 **微博：移动新技术**  
-另外，关于SDK的Bug反馈、用户体验、以及好的建议，请大家尽量提交到 Github 上，我们会尽快解决。  
-目前，我们正在逐步完善微博 SDK，争取为第三方开发者提供一个规范、简单易用、可靠、可扩展、可定制的 SDK，敬请期待。
+虽然我们提供了若干文档，但总有不尽人意的地方，为了快速上手，少走弯路，我们建议您采用以下方式来了解并集成微博SDK。  
+
+* Step 1：浏览 ReadMe 了解大致情况
+* Step 2：运行示例程序 [WeiboSDKDemo.apk][4] 或 [Demo][5] 了解 SDK 提供的所有功能
+* Step 3：查看 [微博Android平台SDK文档V2.4.0.pdf][1] 深入了解如何使用
+* Step 4：参照 [Demo][5] 进行开发  
+
+**如果您在使用过程中有些问题不清楚如何解决**，请先仔细阅读：[常见问题FAQ][2]，尝试能否找到对应的答案。  
+**如果您对 SDK 中提供的某个类、API 不明确**，请在 [WeiboSDK_API-V2.4.0.CHM][3] 中查找对应的注解。  
+
+另外，关于 SDK 的 Bug 反馈、用户体验，以及建议与不足等，请大家尽量提交到 Github 上，充分利用好 Github 这一工具。
+SDK，虽然有很多不足之处，但我们力争为第三方开发者提供一个规范、简单易用、稳定可靠、可扩展、可定制的 SDK，敬请期待。
 
 ------
 
@@ -226,3 +236,7 @@ if (mSsoHandler != null) {
 其它功能请相见文档：[微博Android平台SDK文档V2.4.0.pdf][1]
 
 [1]:https://github.com/mobileresearch/weibo_android_sdk/blob/master/%E5%BE%AE%E5%8D%9AAndroid%E5%B9%B3%E5%8F%B0SDK%E6%96%87%E6%A1%A3V2.4.0.pdf
+[2]:https://github.com/mobileresearch/weibo_android_sdk/blob/master/%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%20FAQ.md
+[3]:https://github.com/mobileresearch/weibo_android_sdk/blob/master/WeiboSDK_API-V2.4.0.CHM
+[4]:https://github.com/mobileresearch/weibo_android_sdk/blob/master/WeiboSDKDemo.apk
+[5]:https://github.com/mobileresearch/weibo_android_sdk/tree/master/demo-src
